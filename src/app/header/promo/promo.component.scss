@@ -1,0 +1,28 @@
+@import '../../styles/variables';
+
+.promo {
+  &__container {
+    display: flex;
+    background-color: $bgColorMedium;
+  }
+
+  &__header {
+    padding: 40px 0 0;
+    font-size: 34px;
+    text-transform: uppercase;
+    color: $accentColor;
+  }
+
+  &__img {
+    height: 300px;
+  }
+}
+
+.image {
+  &__container {
+    height: 300px;
+    margin-left: 20%;
+    background-color: $fontColorDark;
+  }
+}
+

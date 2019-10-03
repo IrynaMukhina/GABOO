@@ -1,0 +1,31 @@
+@import '../../styles/_variables.scss';
+
+.defaultButton {
+  margin: 10px 0;
+  width: 150px;
+  height: 40px;
+  border: 2px solid $accentColor;
+  background-color: transparent;
+  text-transform: uppercase;
+}
+
+.topLineButton {
+  width: 100px;
+  margin: 0 10px;
+  color: $fontColorLight;
+  background-color: $bgColorDark;
+  border:none;
+}
+
+.accentButton {
+  background: $accentColor;
+  color: $fontColorLight;
+}
+
+.defaultButton,
+.topLineButton,
+.accentButton {
+  &:hover {
+    transform: scale(1.1);
+  }
+}

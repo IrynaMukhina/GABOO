@@ -1,0 +1,13 @@
+// @import '~material-design-icons/iconfont/material-icons.scss';
+@import './variables';
+@import './fonts';
+@import './gridSystem';
+@import './reset';
+
+.content {
+  &__container {
+    display: flex;
+    margin: 0 auto;
+    width: 80%;
+  }
+}
