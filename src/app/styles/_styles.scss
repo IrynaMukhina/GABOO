@@ -1,13 +1,25 @@
-// @import '~material-design-icons/iconfont/material-icons.scss';
 @import './variables';
-@import './fonts';
-@import './gridSystem';
-@import './reset';
 
 .content {
   &__container {
     display: flex;
     margin: 0 auto;
     width: 80%;
+  }
+
+  &__title,
+  &__title_sale {
+    margin: 20px 0;
+    text-align: center;
+    color: $accentColor;
+
+    &__sale {
+      text-transform: uppercase;
+
+      &_message {
+        font-size: 48px;
+        color: $fontColorLight;
+      }
+    }
   }
 }

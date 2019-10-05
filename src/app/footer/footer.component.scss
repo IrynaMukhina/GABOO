@@ -1,0 +1,28 @@
+@import '../styles/_variables.scss';
+
+.footer {
+  &__container {
+    display: flex;
+    align-items: center;
+    height: 300px;
+    background: $bgColorDark;
+    color: $fontColorLight;
+    font-size: 12px;
+  }
+
+  &__wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  &__logo {
+    height: 60px;
+  }
+
+  &__title {
+    margin: 0;
+    height: 60px;
+    font-size: 20px;
+  }
+}

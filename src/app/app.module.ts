@@ -11,6 +11,14 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { PromoComponent } from './header/promo/promo.component';
 import { CategoryMenuComponent } from './header/category-menu/category-menu.component';
 import { LineBarComponent } from './header/line-bar/line-bar.component';
+import { FooterComponent } from './footer/footer.component';
+import { SaleBannerComponent } from './shared/sale-banner/sale-banner.component';
+import { MainComponent } from './main/main.component';
+import { StoryComponent } from './main/story/story.component';
+import { ProductsCarouselComponent } from './products-carousel/products-carousel.component';
+
+import { HttpClientModule }   from '@angular/common/http';
+import { HttpService } from './http.service';
 
 @NgModule({
   declarations: [
@@ -23,12 +31,18 @@ import { LineBarComponent } from './header/line-bar/line-bar.component';
     PromoComponent,
     CategoryMenuComponent,
     LineBarComponent,
+    FooterComponent,
+    SaleBannerComponent,
+    MainComponent,
+    StoryComponent,
+    ProductsCarouselComponent,
   ],
   imports: [
     BrowserModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    HttpClientModule,
   ],
-  providers: [],
+  providers: [HttpService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

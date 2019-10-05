@@ -1,3 +1,6 @@
-<div class="logo" ngClass="'color' === 'dark' ? 'logo_dark' : 'logo_accent'">
+<div class="logo" *ngIf="color === 'dark'" class="logo logo_dark">
+  g a b o o
+</div>
+<div class="logo" *ngIf="color === 'accent'" class="logo logo_accent">
   g a b o o
 </div>

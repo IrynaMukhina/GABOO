@@ -1,0 +1,14 @@
+
+
+<div class="carousel__wrapper">
+  <div class="content__container carousel">
+    <button (click)="moveToPrev()">Prev</button>
+    <div class="products__container">
+      <div class="products" #products>
+        <app-product-item *ngFor="let product of productData"
+          [src]="product.images[0].url[0]"></app-product-item>
+      </div>
+    </div>
+    <button (click)="moveToNext()">Next</button>
+  </div>
+</div>

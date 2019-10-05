@@ -1,0 +1,31 @@
+@import '../../styles/_variables.scss';
+
+.story {
+  &__wrapper {
+    display: flex;
+    height: 500px;
+  }
+
+  &__picture {
+    padding: 20px;
+  }
+
+  &__container {
+    background: $bgColorMedium;
+
+    &_baner {
+      background: url('../../../assets/img/banner.jpeg') top right / cover no-repeat;
+    }
+  }
+
+  &__article {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 250px;
+
+    &__wrapper {
+      padding: 100px 0 0 50px;
+    }
+  }
+}
