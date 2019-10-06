@@ -4,6 +4,8 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  height: 30px;
+  font-size: 0.8rem;
 
   &__container {
     background: $bgColorDark;
@@ -15,9 +17,72 @@
   }
 }
 
+.contact {
+  &__container {
+    display: flex;
+  }
+} 
+
 .link {
   &__container {
     display: flex;
     justify-content: flex-end;
   }
+
+  &__item {
+    padding: 0 5px;
+  }
+}
+
+.login {
+  &__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  
+}
+
+@media screen and (max-width: 768px) {
+  .contact {
+    &__container {
+      width: 60%;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .bar {
+    flex-direction: column;
+    justify-content: space-around;
+    height: 60px;
+  }
+
+  .contact,
+  .login {
+    &__container {
+      width: 100%;
+      justify-content: space-around;
+
+      p,
+      a {
+        text-align: center;
+      }
+    }
+  }
+
+  .link__container,
+  .bar__link {
+    width: 33%;
+    justify-self: center;
+  }
+
+}
+
+
+@media screen and (max-width: 320px) {
+
 }

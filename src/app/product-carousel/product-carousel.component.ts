@@ -3,11 +3,11 @@ import { HttpService} from '../http.service';
 
 
 @Component({
-  selector: 'app-products-carousel',
-  templateUrl: './products-carousel.component.html',
-  styleUrls: ['./products-carousel.component.scss']
+  selector: 'app-product-carousel',
+  templateUrl: './product-carousel.component.html',
+  styleUrls: ['./product-carousel.component.scss']
 })
-export class ProductsCarouselComponent implements OnInit {
+export class ProductCarouselComponent implements OnInit {
   @ViewChild('products', {static: false}) products: ElementRef;
   productContainer: HTMLElement;
   productList: Array<HTMLElement>;

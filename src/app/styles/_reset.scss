@@ -16,7 +16,10 @@ a {
 }
 
 button,
-select {
+select,
+li,
+a,
+i {
   &:hover {
     cursor: pointer;
   }
@@ -26,7 +29,9 @@ select {
   }
 }
 
-li {
+li,
+a,
+i {
   list-style: none;
 
   &:hover {

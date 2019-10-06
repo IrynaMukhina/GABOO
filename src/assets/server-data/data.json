@@ -55,7 +55,7 @@
     "sex": "female",
     "season": ["spring", "fall", "summer", "winter"],
     "quantity": 12,
-    "price": 60
+    "price": 600
   },
   {
     "productName": "ANSWEAR - BLOUSE",

@@ -10,7 +10,9 @@
     text-transform: uppercase;
 
     &:hover {
-      transform: scale(1.1);
+      transform: scale(1.08);
+      background: $accentColor;
+      color: $fontColorLight;
     }
   }
 
@@ -23,5 +25,9 @@
   &_accent {
     background: $accentColor;
     color: $fontColorLight;
+  }
+
+  &_navigation {
+    width: 110px;
   }
 }

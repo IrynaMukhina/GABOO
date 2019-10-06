@@ -15,10 +15,12 @@ import { FooterComponent } from './footer/footer.component';
 import { SaleBannerComponent } from './shared/sale-banner/sale-banner.component';
 import { MainComponent } from './main/main.component';
 import { StoryComponent } from './main/story/story.component';
-import { ProductsCarouselComponent } from './products-carousel/products-carousel.component';
+import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
 
 import { HttpClientModule }   from '@angular/common/http';
 import { HttpService } from './http.service';
+import { ProductListComponent } from './product-list/product-list.component';
+import { MainMenuComponent } from './header/main-menu/main-menu.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { HttpService } from './http.service';
     SaleBannerComponent,
     MainComponent,
     StoryComponent,
-    ProductsCarouselComponent,
+    ProductCarouselComponent,
+    ProductListComponent,
+    MainMenuComponent,
   ],
   imports: [
     BrowserModule,

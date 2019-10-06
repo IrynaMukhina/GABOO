@@ -3,26 +3,72 @@
 .promo {
   &__container {
     display: flex;
+    justify-content: center;
+    height: 450px;
     background-color: $bgColorMedium;
   }
 
-  &__header {
-    padding: 40px 0 0;
-    font-size: 34px;
-    text-transform: uppercase;
-    color: $accentColor;
+  &__content {
+    position: absolute;
+    top: 10%;
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+    justify-content: space-between;
+    height: 320px;
+    color: $fontColorLight;
   }
 
-  &__img {
-    height: 300px;
+  &__header {
+    font-family: $mainFontBold;
+    font-size: 2.4rem;
+    text-transform: uppercase;
+
+    &_accent {
+      font-size: 3rem;
+      color: $accentColor;
+    }
   }
 }
 
 .image {
   &__container {
-    height: 300px;
-    margin-left: 20%;
-    background-color: $fontColorDark;
+    position: relative;
+    height: inherit;
+    background:  url('../../../assets/img/bored-boredom-casual-949670.jpg') no-repeat;
+    background-size: cover;
   }
 }
 
+@media screen and (max-width: 992px) {
+  .promo {
+    &__content {
+      height: 400px;
+    }
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .promo {
+    &__container {
+      height: 550px;
+    }
+  }
+}
+
+@media screen and (max-width: 576px) {
+  .promo {
+    &__container {
+      height: 600px;
+    }
+
+    &__content {
+      width: 90%;
+    }
+  }
+}
+
+
+@media screen and (max-width: 320px) {
+
+}
