@@ -1,6 +1,7 @@
 @import '../styles/_variables.scss';
 
 .carousel {
+  position: relative;
   display: flex;
   justify-content: space-between;
   
@@ -8,7 +9,7 @@
     display: flex;
     align-items: center;
     height: 500px;
-    background: $bgColorMedium;
+    background: $bgColorLight;
   }
 }
 
@@ -20,4 +21,27 @@
   &__container {
     overflow-x: hidden;
   }
+}
+
+button {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: $bgColorDark;
+}
+
+.arrow-icon {
+  color: $fontColorLight;
+}
+
+.left {
+  position: absolute;
+  top: 42%;
+  left: 5%;
+}
+
+.right {
+  position: absolute;
+  top: 42%;
+  right: 5%;
 }

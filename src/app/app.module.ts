@@ -16,11 +16,12 @@ import { SaleBannerComponent } from './shared/sale-banner/sale-banner.component'
 import { MainComponent } from './main/main.component';
 import { StoryComponent } from './main/story/story.component';
 import { ProductCarouselComponent } from './product-carousel/product-carousel.component';
-
 import { HttpClientModule }   from '@angular/common/http';
 import { HttpService } from './http.service';
 import { ProductListComponent } from './product-list/product-list.component';
 import { MainMenuComponent } from './header/main-menu/main-menu.component';
+import { ParallaxComponent } from './parallax/parallax.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -40,11 +41,13 @@ import { MainMenuComponent } from './header/main-menu/main-menu.component';
     ProductCarouselComponent,
     ProductListComponent,
     MainMenuComponent,
+    ParallaxComponent,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FontAwesomeModule
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

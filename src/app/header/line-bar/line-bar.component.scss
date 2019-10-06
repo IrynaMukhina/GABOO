@@ -31,6 +31,16 @@
 
   &__item {
     padding: 0 5px;
+
+    &:hover {
+      color: $accentColor;
+    }
+  }
+}
+
+a {
+  &:hover {
+    color: $accentColor;
   }
 }
 

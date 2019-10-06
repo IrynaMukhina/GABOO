@@ -19,7 +19,8 @@ button,
 select,
 li,
 a,
-i {
+i,
+fa-icon {
   &:hover {
     cursor: pointer;
   }

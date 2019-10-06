@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { HttpService} from '../http.service';
+import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
 
 @Component({
@@ -8,10 +9,13 @@ import { HttpService} from '../http.service';
   styleUrls: ['./product-carousel.component.scss']
 })
 export class ProductCarouselComponent implements OnInit {
+  faArrowLeft = faArrowLeft;
+  faArrowRight = faArrowRight;
+
   @ViewChild('products', {static: false}) products: ElementRef;
   productContainer: HTMLElement;
   productList: Array<HTMLElement>;
-  itemWidth: number = 270;
+  itemWidth: number = 280;
   visibleNum: number = 4;
   position: number = 0;
   productData;

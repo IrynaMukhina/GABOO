@@ -11,10 +11,14 @@
         <div class="col-5 menu__input__container">
           <div class="col-7 menu__search__container">
             <input type="text" placeholder="Search" class="menu__search">
-            <button class="menu__search__btn"></button>
+            <button class="menu__search__btn">
+              <fa-icon [icon]="faSearch"></fa-icon>
+            </button>
           </div>
           <div class="col-4 menu__cart__container">
-            <button class="menu__cart__btn"></button>
+            <button class="menu__cart__btn">
+              <fa-icon [icon]="faCartArrowDown"></fa-icon>
+            </button>
             <div class="menu__cart"></div>
           </div>
         </div>

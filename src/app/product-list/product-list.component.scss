@@ -1,6 +1,8 @@
 @import '../styles/_variables.scss';
 
 .product {
+  background: $bgColorMedium;
+
   &__wrapper {
     display: flex;
     flex-direction: column;
