@@ -13,7 +13,7 @@ export class ProductListComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
-    this.httpService.getData().subscribe((data:any) => this.productData = JSON.parse(JSON.stringify(data)));
+    this.httpService.getData().subscribe((data: any) => this.productData = JSON.parse(JSON.stringify(data)));
   }
 
 }

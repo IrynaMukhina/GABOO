@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, ViewChild, ElementRef, AfterViewInit } from '@angular/core';
 import { HttpService} from '../http.service';
 import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
 
@@ -8,14 +8,14 @@ import { faArrowLeft, faArrowRight } from '@fortawesome/free-solid-svg-icons';
   templateUrl: './product-carousel.component.html',
   styleUrls: ['./product-carousel.component.scss']
 })
-export class ProductCarouselComponent implements OnInit {
+export class ProductCarouselComponent implements OnInit, AfterViewInit, AfterViewChecked {
   faArrowLeft = faArrowLeft;
   faArrowRight = faArrowRight;
 
   @ViewChild('products', {static: false}) products: ElementRef;
   productContainer: HTMLElement;
   productList: Array<HTMLElement>;
-  itemWidth: number = 280;
+  itemWidth: number = 260;
   visibleNum: number = 4;
   position: number = 0;
   productData;
@@ -24,9 +24,9 @@ export class ProductCarouselComponent implements OnInit {
   constructor(private httpService: HttpService) { }
 
   ngOnInit() {
-    this.httpService.getData().subscribe((data:any) => this.productData = JSON.parse(JSON.stringify(data)));
-    
-    //this.itemWidth = this.productList[0].offsetWidth;
+    // this.httpService.getData().subscribe((data:any) => this.productData = JSON.parse(JSON.stringify(data)));
+    this.httpService.getData().subscribe((data: any) => this.productData = data);
+    // this.itemWidth = this.productList[0].offsetWidth;
   }
 
   ngAfterViewInit() {
@@ -37,16 +37,15 @@ export class ProductCarouselComponent implements OnInit {
     this.productList = [...this.products.nativeElement.childNodes];
   }
 
-  moveToNext(){
+  moveToNext() {
     this.position -= this.itemWidth * this.visibleNum;
     this.position = Math.max(this.position, -this.itemWidth * (this.productList.length - 1 - this.visibleNum));
     this.productContainer.style.marginLeft = this.position + 'px';
-    
-    console.log(this.productList.length);
 
+    console.log(this.productList.length);
   }
 
-  moveToPrev(){
+  moveToPrev() {
     const newPosition = this.position + this.itemWidth * this.visibleNum;
     const posiblePosition = 0;
 

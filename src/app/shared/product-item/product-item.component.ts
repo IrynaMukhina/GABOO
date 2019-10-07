@@ -10,12 +10,9 @@ export class ProductItemComponent implements OnInit {
   @Input() title: string;
   @Input() price: number;
 
-  constructor() {
-    
-  }
+  constructor() {}
 
   ngOnInit() {
-    
   }
 
 }

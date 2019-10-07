@@ -8,7 +8,7 @@ import './styles/_styles.scss';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  func(){
-    console.log('Click')
+  func() {
+    console.log('Click');
   }
 }
