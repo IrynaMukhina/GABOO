@@ -22,6 +22,7 @@ import { ProductListComponent } from './product-list/product-list.component';
 import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { ScrollComponent } from './scroll/scroll.component';
 
 @NgModule({
   declarations: [
@@ -42,6 +43,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ProductListComponent,
     MainMenuComponent,
     ParallaxComponent,
+    ScrollComponent,
   ],
   imports: [
     BrowserModule,

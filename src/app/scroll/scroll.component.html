@@ -1,0 +1,16 @@
+<nav class="scroll">
+  <ul>
+    <li 
+      *ngFor="let component of pageComponents; let i = index"
+      class="item"
+      (click)="onItemSelect(component)"
+    >     
+        <span class="item__text">
+          {{component.name}}
+        </span>
+        <span class="item__id">
+          {{component.id}}
+        </span>
+    </li>
+  </ul>
+</nav>

@@ -1,0 +1,47 @@
+.scroll {
+    position: fixed;
+    left: 90%;
+    top: 50%;
+    transform: translateY(-50%);
+
+    .item {
+        border: 1px solid rgba(0, 0, 0, 0.7);
+        border-radius: 9px;
+        width: 18px;
+        height: 18px;
+        margin: 20px 0;
+        background-color: rgba(211,153,95,0.5);
+        cursor: pointer;
+        transition:width 200ms;
+        
+        &__text {
+            display: none;
+            text-align: left;
+            font-size: 0.7rem;
+            color: white;
+            text-align: center;
+        }
+
+        &__id {
+            display: none;
+        }
+
+        &:hover {
+            background-color: rgba(0, 0, 0, 0.7);
+            transform: translateX(calc(-100% + 18px));
+            width: 100px;
+            
+            .item__text {
+                display: block;
+            }
+           
+        }
+
+        & .active {
+            transform: scale(1.2);
+            .item__id {
+                display: block;
+            }
+        }
+    }
+}
