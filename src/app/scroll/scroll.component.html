@@ -1,22 +1,30 @@
 <nav class="scroll">
-  <ul>
+  <ul *ngIf="pageComponents">
     <li 
-      *ngFor="let component of pageComponents; let i = index"
-      class="item"
+      *ngFor="let component of pageComponents; let id = index"
+      class="menu"
       (click)="onItemSelect(component)"
+      [ngSwitch]="component.selector"
     >     
-        <span class="item__text">
+      <fa-icon 
+        *ngSwitchCase="'app-header'"
+        [icon]="toHeaderIcon"
+        class="icon"
+      ></fa-icon>
+      <fa-icon 
+        *ngSwitchCase="'app-footer'"
+        [icon]="toFooterIcon"
+        class="icon"
+      ></fa-icon>
+      <span *ngSwitchDefault class="item">
+        <span  class="item__text">
           {{component.title}}
         </span>
         <span class="item__id">
-          {{component.id}}
+          {{id + 1}}
         </span>
+      </span>
+      
     </li>
   </ul>
-  <fa-icon 
-    [icon]="toHeaderIcon"
-    class="scroll__top"
-    (click)="onItemSelect()"
-  >
-  </fa-icon>
 </nav>

@@ -4,9 +4,9 @@ import { Directive, ElementRef } from '@angular/core';
   selector: '[appScrollAnchor], app-header, app-footer'
 })
 export class ScrollAnchorDirective {
-  // elementReference: ElementRef;
+  public elementReference: ElementRef;
   
   constructor(elr: ElementRef) {
-    return elr;
+    this.elementReference = elr;
   }
 }

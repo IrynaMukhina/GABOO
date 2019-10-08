@@ -1,6 +1,6 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, OnInit, ElementRef, AfterViewChecked } from '@angular/core';
 import { ScrollService } from '../scroll.service';
-import { AfterViewInit, QueryList, ViewChildren } from '@angular/core';
+import { AfterViewInit, QueryList, ViewChildren, ContentChildren, AfterContentInit } from '@angular/core';
 import { ScrollAnchorDirective } from '../scroll-anchor.directive';
 
 @Component({
@@ -8,18 +8,18 @@ import { ScrollAnchorDirective } from '../scroll-anchor.directive';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.css']
 })
-export class MainComponent implements OnInit, AfterViewInit {
-  @ViewChildren(ScrollAnchorDirective) pageAnchors: QueryList<ElementRef>;
+export class MainComponent {
+  @ViewChildren(ScrollAnchorDirective)
+    private pageAnchors: QueryList<ScrollAnchorDirective>;
+  
+  constructor(private scrollService: ScrollService) { }
 
-  constructor(private scrollService: ScrollService) {
-  }
-
-  ngOnInit() { 
-  }
-
-  ngAfterViewInit() {
+  ngOnInit() { }
+  
+  ngAfterViewInit () {
+    console.log(this.pageAnchors.toArray());
     this.pageAnchors.forEach(element => {
-      this.scrollService.addAnchor(element);  
+      this.scrollService.addAnchor(element.elementReference);
     });
   }
 }

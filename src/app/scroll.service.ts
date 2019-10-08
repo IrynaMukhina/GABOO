@@ -1,96 +1,119 @@
-import { Injectable, ElementRef } from '@angular/core';
+import { Injectable, ElementRef, Inject, Output, EventEmitter } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
+import { fromEvent } from 'rxjs';
+import { map } from 'rxjs/operators';
 
 export interface IPageAnchor {
   title: string,
-  offsetTop: number,
-  selector: string,
+  selector: string
 }
 
-interface IReferenceAnchor {
-  ref: ElementRef,
-  anchor: IPageAnchor
+interface IAnchorOffset {
+  offset: number,
+  selector: string
 }
 
 @Injectable({
   providedIn: 'root'
 })
 export class ScrollService {
-  private pageAnchors: IReferenceAnchor[];
-  private headerAnchor: IReferenceAnchor;
-  private footerAnchor: IReferenceAnchor;
-  
-  constructor() {
-    this.pageAnchors = [];
+  // @Output() activeAnchor: EventEmitter<any> = new EventEmitter();
+  private pageAnchorRefs: ElementRef[] = [];
+  public activeAnchor: ElementRef;
+  private scrollOptions = { 
+    behavior: 'smooth',
+    block: 'start',
+    inline: 'nearest'
+  };
+  private pageAnchorOffsets: IAnchorOffset[] = [];
+  private getElementVerticalPosition(elem) {
+   const clientHeight =  document.documentElement.clientHeight;
+
+  }
+
+  constructor(@Inject(DOCUMENT) private document: any) {
+    fromEvent(window, 'scroll').pipe(
+      map(_ => window.pageYOffset))
+        .subscribe(position => {
+          this.onScrollCallback(position);
+        });
+    console.log('sd height', window.innerHeight)
+  }
+
+  private selectRef(anchor: IPageAnchor) {
+    return this.pageAnchorRefs.find(el =>
+      el.nativeElement.localName === anchor.selector
+    );
+  }
+
+  private onScrollCallback(position: number) {
+    console.log(this.pageAnchorOffsets);
+    
+    const anchorsCount = this.pageAnchorOffsets.length;
+    let heightCounter = 0;
+    for (let i = 0; i < anchorsCount - 1; i++) {
+      console.log(position);
+      if(position >= this.pageAnchorOffsets[i].offset
+        
+        && position < this.pageAnchorOffsets[i + 1].offset
+     
+        ) {
+          this.activeAnchor = this.selectRef({
+            title: '',
+            selector: this.pageAnchorOffsets[i].selector
+          });
+          console.log(this.activeAnchor);
+          
+          return;
+        }
+       
+    }
+    this.activeAnchor = this.selectRef({
+      title: '',
+      selector: this.pageAnchorOffsets[anchorsCount - 1].selector
+    });
   }
 
   addAnchor(elRef: ElementRef) {
-    const offsetTop = elRef.nativeElement.offsetTop;
-    const title = elRef.nativeElement.title;
-    const selector = elRef.nativeElement.localName;
+    this.pageAnchorRefs.push(elRef);
+    console.log(elRef.nativeElement.localName, elRef.nativeElement.getBoundingClientRect().top);
+    console.log('height', elRef.nativeElement.getBoundingClientRect().height);
+    console.log('scrollTop', this.document.documentElement.scrollTop)
 
-    switch(selector) {
-      case 'app-header': {
+    this.pageAnchorOffsets.push({
+      offset: elRef.nativeElement.getBoundingClientRect().top
+      + elRef.nativeElement.getBoundingClientRect().height,
+      // offset: this.getElementVerticalPosition(elRef.nativeElement),
+      selector: elRef.nativeElement.localName
+    });
 
-        const anchor: IPageAnchor = {
-          offsetTop: offsetTop,
-          title: 'Header',
-          selector: selector
-        };
-        this.headerAnchor = {
-          ref: elRef,
-          anchor: anchor,
-        }
-        break;
-      }
-      case 'app-footer': {
-        const anchor: IPageAnchor = {
-          offsetTop: offsetTop,
-          title: 'Footer',
-          selector: selector
-        };
-        this.headerAnchor = {
-          ref: elRef,
-          anchor: anchor,
-        }
-        break;
-      }
-      default: {
-        const anchor: IPageAnchor = {
-          offsetTop: offsetTop,
-          title: title,
-          selector: selector
-        };
-        this.pageAnchors.push({
-          ref: elRef,
-          anchor: anchor
-      });
-    }
-    }
+    this.pageAnchorOffsets.sort((a, b) => a.offset - b.offset);
   }
+
   resetAnchors() {
-    this.pageAnchors = [];
+    this.pageAnchorRefs = [];
+    this.pageAnchorOffsets = [];
   }
 
-  getAnchors() {
-    console.log(this.pageAnchors);
-    const anchors = [];
-    console.log(this.pageAnchors[0]);
-    
-     this.pageAnchors.forEach((element, i) => {
-       console.log(i);
-       
-       anchors.push(element.anchor);
-     });
-    console.log(anchors);
-    
-    return anchors;
+  getPageAnchors() {
+    return this.pageAnchorRefs.map(elRef => ({ 
+      selector: elRef.nativeElement.localName,
+      title: elRef.nativeElement.title
+    }));
   }
 
   moveTo(anchor: IPageAnchor) {
-
+    this.selectRef(anchor).nativeElement.scrollIntoView(this.scrollOptions);
   }
 
   makeActive(anchor: IPageAnchor) {
+    this.activeAnchor = this.selectRef(anchor);
+  }
 
+  getActive() {
+    return { 
+      selector: this.activeAnchor.nativeElement.localName,
+      title: this.activeAnchor.nativeElement.title
+    }
   }
 }

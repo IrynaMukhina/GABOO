@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { ScrollService, IPageAnchor } from '../scroll.service';
 import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,29 +7,29 @@ import { faChevronUp, IconDefinition, faChevronDown } from '@fortawesome/free-so
   templateUrl: './scroll.component.html',
   styleUrls: ['./scroll.component.scss']
 })
-export class ScrollComponent implements OnInit, AfterViewInit  {
+export class ScrollComponent {
   
   toHeaderIcon: IconDefinition = faChevronUp;
   toFooterIcon: IconDefinition = faChevronDown;
-  pageComponents: IPageAnchor [];
+  pageComponents: IPageAnchor[];
+  pageContent: IPageAnchor[];
 
-  constructor(private scrollService: ScrollService) { 
-    
-    // console.log(this.pageComponents);
-    
-  }
+  constructor(private scrollService: ScrollService) {
+    // this.scrollService.scroll$.subscribe(pos => {
+    //   this.scroll = pos;
+    // });
+   }
+  scroll:number = 0;
 
-  onItemSelect(comp: IPageAnchor): void {
-    document.querySelector(comp.selector).scrollIntoView({behavior: "smooth", block: "start", inline: "nearest"});
+  onItemSelect(anchor: IPageAnchor): void {    
+    this.scrollService.moveTo(anchor);
+    this.scrollService.makeActive(anchor);
+    console.log(this.scroll);
   }
 
   ngOnInit() {
-    //this.pageComponents.forEach(el => console.log(el.offsetTop));
+    setTimeout(_ => {
+      this.pageComponents = this.scrollService.getPageAnchors();
+    }, 0);
   }
-
-  ngAfterViewInit(): void {
-    this.pageComponents = this.scrollService.getAnchors();
-  }
-  
-
 }
