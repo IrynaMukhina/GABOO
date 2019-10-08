@@ -1,44 +1,18 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 import { ScrollService } from '../scroll.service';
-
-const PAGE_CONTENT = [
-  { selector: 'app-product-list',
-    name: 'Product list',
-    id: 1,
-    offSet: 0 },
-  { selector: 'app-sale-banner',
-    name: 'Sale',
-    id: 2,
-    offSet: 0 },
-  { selector: 'app-parallax',
-    name: 'Parallax',
-    id: 3,
-    offSet: 0 },
-  { selector: 'app-product-carousel',
-    name: 'Carousel',
-    id: 4,
-    offSet: 0 },
-  { selector: 'app-story',
-    name: 'Story',
-    id: 5,
-    offSet: 0 },
-];
+import { faChevronUp } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-scroll',
   templateUrl: './scroll.component.html',
   styleUrls: ['./scroll.component.scss']
 })
-export class ScrollComponent implements OnInit {
-  private pageComponents: {
-    selector: string;
-    name: string;
-    id: number;
-    offSet: number; 
-  }[];
+export class ScrollComponent implements OnInit, AfterViewInit  {
+  
+  toTopIcon = faChevronUp;
 
-  constructor() { 
-    this.pageComponents = PAGE_CONTENT;
+
+  constructor(private scrollService: ScrollService) { 
   }
 
   onItemSelect(comp): void {
@@ -46,5 +20,12 @@ export class ScrollComponent implements OnInit {
   }
 
   ngOnInit() {
+    // this.pageComponents.forEach(el => console.log(el.offsetTop));
   }
+
+  ngAfterViewInit(): void {
+    
+  }
+  
+
 }

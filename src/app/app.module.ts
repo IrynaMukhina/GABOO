@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './header/header.component';
@@ -21,8 +22,8 @@ import { HttpService } from './http.service';
 import { ProductListComponent } from './product-list/product-list.component';
 import { MainMenuComponent } from './header/main-menu/main-menu.component';
 import { ParallaxComponent } from './parallax/parallax.component';
-import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ScrollComponent } from './scroll/scroll.component';
+import { ScrollAnchorDirective } from './scroll-anchor.directive';
 
 @NgModule({
   declarations: [
@@ -44,12 +45,13 @@ import { ScrollComponent } from './scroll/scroll.component';
     MainMenuComponent,
     ParallaxComponent,
     ScrollComponent,
+    ScrollAnchorDirective,
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   providers: [HttpService],
   bootstrap: [AppComponent]

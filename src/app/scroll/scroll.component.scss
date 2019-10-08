@@ -1,3 +1,5 @@
+$item-size: 18px;
+
 .scroll {
     position: fixed;
     left: 90%;
@@ -6,13 +8,12 @@
 
     .item {
         border: 1px solid rgba(0, 0, 0, 0.7);
-        border-radius: 9px;
-        width: 18px;
-        height: 18px;
+        border-radius: $item-size / 2;
+        width: $item-size;
+        height: $item-size;
         margin: 20px 0;
-        background-color: rgba(211,153,95,0.5);
+        background-color: rgba(211, 153, 95, 0.5);
         cursor: pointer;
-        transition:width 200ms;
         
         &__text {
             display: none;
@@ -28,13 +29,13 @@
 
         &:hover {
             background-color: rgba(0, 0, 0, 0.7);
-            transform: translateX(calc(-100% + 18px));
+            transform: translateX(calc(-100% + #{$item-size}));
             width: 100px;
+            transition: ease-in-out 200ms;
             
             .item__text {
                 display: block;
             }
-           
         }
 
         & .active {
@@ -44,4 +45,10 @@
             }
         }
     }
+    
+    &__top {
+        font-size: 20px;
+        color: rgba(0, 0, 0, 0.7);
+    }
+
 }

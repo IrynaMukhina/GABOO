@@ -6,11 +6,17 @@
       (click)="onItemSelect(component)"
     >     
         <span class="item__text">
-          {{component.name}}
+          {{component.title}}
         </span>
         <span class="item__id">
           {{component.id}}
         </span>
     </li>
   </ul>
+  <fa-icon 
+    [icon]="toTopIcon"
+    class="scroll__top"
+    (click)="onItemSelect(header)"
+  >
+  </fa-icon>
 </nav>
